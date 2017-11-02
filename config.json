@@ -1,0 +1,29 @@
+{
+	"mysql": {
+		"db_name": "mydb",
+		"db_host": "localhost",
+		"db_port": "3306",
+		"db_username": "root",
+		"db_password": "",
+		"db_type": "mysql",
+		"db_table": {
+			"customer": {
+				"username": "userName",
+				"email": "mailId"
+			}
+		}
+	},
+	"mongodb": {
+		"db_name": "mydb",
+		"db_host": "127.0.0.1",
+		"db_port": "27017",
+		"db_username": "",
+		"db_password": "",
+		"db_collections": {
+			"customer": {
+				"username": "userName",
+				"email": "mailId"
+			}
+		}
+	}
+}

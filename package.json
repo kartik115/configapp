@@ -1,0 +1,19 @@
+  {
+  "name": "configapp",
+  "version": "1.0.0",
+  "description": "Basic app to understand project setup",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kartikeya@AVIOTA",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.12.5",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.4.2",
+    "nodemon": "^1.12.1",
+    "sequelize": "^4.20.3"
+  }
+}
