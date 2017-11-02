@@ -1,8 +1,6 @@
 var express = require('express');
 var app = express();
 
-// const Sequelize = require('sequelize');
-// const sequelize = require('./settings').sequelize;
 const sqlModels = require('./Models/mysqlModels');
 const noSqlModels = require('./Models/nosqlModels');
 
