@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-var config = require('./config');
+var config = require('./secrets');
 var mysql = require('mysql2');
 
 var routes = require('./routes');

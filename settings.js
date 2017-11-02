@@ -1,4 +1,4 @@
-var config = require('./config');
+var config = require('./secrets');
 
 // Setting the configuration
 var mysqlConfig = config.mysql;
