@@ -5,7 +5,7 @@ const sqlModels = require('./Models/mysqlModels');
 const noSqlModels = require('./Models/nosqlModels');
 
 var Customer = sqlModels.customer;
-var User = noSqlModels.customers;
+const User = noSqlModels.customers;
 
 // const Customer = sequelize.define('customer', {
 // 	id: {
@@ -56,7 +56,7 @@ app.get('/mongo/getData', function(req, res){
 		User.find().then(users => {
 			res.json({'users': users});
 		});
-	} else{
+	} else {
 		User.find({ name: queryParams.username}).then(users => {
 			res.json({'users': users});
 		});

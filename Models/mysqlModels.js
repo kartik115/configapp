@@ -1,7 +1,7 @@
 var express = require('express');
 
 const Sequelize = require('sequelize');
-const sequelize = require('../DbConf/mysqlConf').sequelize;
+const sequelize = require('../DbConf/mysqlConf');
 
 const Customer = sequelize.define('customer', {
 	id: {

@@ -17,10 +17,4 @@ db.once('open', function() {
   console.log("we're connected!");
 });
 
-var customerSchema = new Schema({
-  name: String, 
-  age: Number, 
-  email: String
-});
-
-module.exports.collection = mongoose.model('customers', customerSchema);
+module.exports = mongoose;

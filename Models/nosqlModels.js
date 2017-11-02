@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require('../DbConf/mongoConf');
 var Schema = mongoose.Schema;
 
 var customerSchema = new Schema({

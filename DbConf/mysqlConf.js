@@ -26,4 +26,4 @@ sequelize
   });
 
 
-module.exports.sequelize = sequelize;
+module.exports = sequelize;
