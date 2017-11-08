@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+// Used for error handling....DB queries should not be here
+const Sequelize = require('sequelize');
 
 const sqlModels = require('./Models/mysqlModels');
 const noSqlModels = require('./Models/nosqlModels');
@@ -27,14 +29,42 @@ const User = noSqlModels.customers;
 //Customer.build({'name': 'Kartikeya', 'email': 'kartikeyamishra2@gmail.com'}).save(); 
 
 app.get('/sql/getData', function(req, res){
+	//Customer.build({'customer_name': 'Kartikeya', 'mail_id': 'kartikeyamishra2@gmail.com'}).save();
 	queryParams = req.query;
 	if (JSON.stringify(queryParams) === '{}'){
 		Customer.findAll().then(customers => {
 			res.json({'users': customers});
+		}).catch(function (err) {
+  			res.status(500).send(err);
+  			console.log(err);
 		});
 	} else{
-		Customer.findAll({ where: { name: queryParams.username }}).then(customers => {
+		Customer.findAll({ where: { customer_name: queryParams.username }}).then(customers => {
 			res.json({'users': customers});
+		}).catch(function (err) {
+  			res.status(500).send(err);
+  			console.log(err);
+		});
+	}
+});
+
+
+app.get('/sql/getData', function(req, res){
+	//Customer.build({'customer_name': 'Kartikeya', 'mail_id': 'kartikeyamishra2@gmail.com'}).save();
+	queryParams = req.query;
+	if (JSON.stringify(queryParams) === '{}'){
+		Customer.findAll().then(customers => {
+			res.json({'users': customers});
+		}).catch(function (err) {
+  			res.status(500).send(err);
+  			console.log(err);
+		});
+	} else{
+		Customer.findAll({ where: { customer_name: queryParams.username }}).then(customers => {
+			res.json({'users': customers});
+		}).catch(function (err) {
+  			res.status(500).send(err);
+  			console.log(err);
 		});
 	}
 });

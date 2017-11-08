@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
-var mysql = require('mysql2');
+
+require('./DbConf/mysql2Conf');
 
 var config = require('./secrets');
 
