@@ -13,10 +13,12 @@ var connection = mysql.createConnection({
 });
 
 var Tables = mysqlConfig.db_table;
-connection.connect();
 
-// console.log(Object.keys(Tables));
-// console.log(Object.keys(Tables["customer"]));
+console.log(Object.keys(Tables));
+console.log(Object.keys(Tables["customer"]));
+
+
+connection.connect();
 
 for (table in Tables) {
 	var tableObject = Tables[table];
@@ -42,7 +44,7 @@ function validateTables(table, tableObject){
 				//console.log(tableObject[fieldName] + table + fieldName);
 				var obj = tableObject[fieldName];
 				if (obj == undefined){
-					console.log("OMG !!!!!!!! column" + fieldName + " not exist in your config file");
+					console.log("Be careful !! column: " + fieldName + " not exist in your config file for table: "+table);
 				}
 				else if (obj['type'] == fieldType) {
 					return 1;
@@ -53,4 +55,4 @@ function validateTables(table, tableObject){
   	});
 }
 
-connection.end();
+module.exports = connection;

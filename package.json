@@ -1,4 +1,4 @@
-  {
+{
   "name": "configapp",
   "version": "1.0.0",
   "description": "Basic app to understand project setup",
@@ -9,6 +9,7 @@
   "author": "Kartikeya@AVIOTA",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongoose": "^4.12.5",
     "mysql": "^2.15.0",

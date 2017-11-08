@@ -1,5 +1,8 @@
 var express = require('express');
 var app = express();
+
+const conn = require('./DbConf/mysql2Conf');
+
 // Used for error handling....DB queries should not be here
 const Sequelize = require('sequelize');
 
@@ -9,22 +12,38 @@ const noSqlModels = require('./Models/nosqlModels');
 var Customer = sqlModels.customer;
 const User = noSqlModels.customers;
 
-// const Customer = sequelize.define('customer', {
-// 	id: {
-// 		type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true
-// 	},
-// 	name: {
-// 		type: Sequelize.STRING, allowNull: false
-// 	},
-// 	email: {
-// 		type: Sequelize.STRING, allowNull: false
-// 	},
-// 	createdAt: {type: Sequelize.DATE, field: 'created_at'},
-// 	updatedAt: {type: Sequelize.DATE, field: 'updated_at'}
-// }, {
-// 	freezeTableName: true,
-// 	timestamps: true
-// });
+
+app.post('/register', function(req, res){
+	var tableName = req.body.table_name;
+	var fields = req.body.fields;
+	var sqlScript = '';
+	fields.forEach(function(field) {
+		sqlScript += field['name'] +" "+ field['type'] +" ";
+		if (field['is_primary']) sqlScript += "PRIMARY KEY" + " ";
+		if (field['is_unique']) sqlScript += "UNIQUE KEY" + " ";
+		if (field['is_null']) {
+			sqlScript += "NULL" + " ";
+		} else {
+			sqlScript += "NOT NULL" + " ";
+		}
+		sqlScript += ",";
+	});
+	sqlScript = sqlScript.slice(0, -1);
+	console.log(sqlScript);
+	var sql = "CREATE TABLE " +tableName + " (" + sqlScript + ")";
+	console.log(sql);
+	conn.connect();
+	conn.query(sql, function(err, result){
+		if (err) {
+			res.json({'msg': err});
+		}
+		else {
+			console.log("Table created!");
+			res.json({'msg': tableName + " created successfully !!"});
+		}
+	});
+});
+
 
 //Customer.build({'name': 'Kartikeya', 'email': 'kartikeyamishra2@gmail.com'}).save(); 
 
