@@ -22,11 +22,11 @@ const Customer = sequelize.define('customer', {
 	mail_id: {
 		type: Sequelize.STRING, allowNull: false, field: "email"
 	},
-	age: {
-		type: Sequelize.INTEGER, allowNull: false
-	},
 	created_at: {type: Sequelize.DATE, field: 'created_at'},
 	updated_at: {type: Sequelize.DATE, field: 'updated_at'},
+	// age: {
+	// 	type: Sequelize.INTEGER, allowNull: false
+	// },
 	// createdAt: {type: Sequelize.DATE, field: 'created_at'},
 	// updatedAt: {type: Sequelize.DATE, field: 'updated_at'}
 }, {
